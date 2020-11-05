@@ -7,5 +7,5 @@ steps:
         and(
           succeededOrFailed(),
           eq(variables['OSVmImage'], 'ubuntu-18.04'),
-          eq(variables['Container'], null)
+          eq(variables['Container'], '')
         )
