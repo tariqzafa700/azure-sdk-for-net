@@ -8,6 +8,9 @@ parameters:
 - name: EnvVars
   type: object
   default: {}
+- name: ArmTemplateParameters
+  type: object
+  default: {}
 - name: MaxParallel
   type: number
   default: 0
@@ -76,6 +79,8 @@ jobs:
           Location: ${{ parameters.CloudConfig.Location }}
           ServiceDirectory: '${{ parameters.ServiceDirectory }}'
           SubscriptionConfiguration: ${{ parameters.CloudConfig.SubscriptionConfiguration }}
+          ArmTemplateParameters: ${{ parameters.ArmTemplateParameters }}
+          Platform: $(Agent.JobName)
 
       - pwsh: >
           Set-PsDebug -Trace 1 &&
