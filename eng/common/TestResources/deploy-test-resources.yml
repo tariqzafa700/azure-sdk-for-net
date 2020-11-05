@@ -75,13 +75,13 @@ steps:
       #  ${{ parameters.PlatformArmTemplateParameters }}
       #'@ | ConvertFrom-Json -AsHashtable;
 
-      if ($platformArmTemplateParameters) {
-        foreach ($p in $platformArmTemplateParameters.GetEnumerator()) {
-          if (!$p.Value.Platforms -or '${{ parameters.Platform }}' -in $p.Value.Platforms) {
-            $subscriptionConfiguration.ArmTemplateParameters[$p.Name] = $p.Value.Value
-          }
-        }
-      }
+      #if ($platformArmTemplateParameters) {
+      #  foreach ($p in $platformArmTemplateParameters.GetEnumerator()) {
+      #    if (!$p.Value.Platforms -or '${{ parameters.Platform }}' -in $p.Value.Platforms) {
+      #      $subscriptionConfiguration.ArmTemplateParameters[$p.Name] = $p.Value.Value
+      #    }
+      #  }
+      #}
 
       eng/common/TestResources/New-TestResources.ps1 `
         -BaseName 'Generated' `
