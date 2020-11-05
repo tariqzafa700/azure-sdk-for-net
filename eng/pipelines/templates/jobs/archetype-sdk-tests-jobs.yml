@@ -75,12 +75,12 @@ jobs:
             ${{ pair.key }}: ${{ pair.value }}
 
       - template: /eng/common/TestResources/deploy-test-resources.yml
-        parameters:
-          Location: ${{ parameters.CloudConfig.Location }}
-          ServiceDirectory: '${{ parameters.ServiceDirectory }}'
-          SubscriptionConfiguration: ${{ parameters.CloudConfig.SubscriptionConfiguration }}
-          PlatformArmTemplateParameters: ${{ parameters.ArmTemplateParameters }}
-          Platform: $(Agent.JobName)
+        #parameters:
+          #Location: ${{ parameters.CloudConfig.Location }}
+          #ServiceDirectory: '${{ parameters.ServiceDirectory }}'
+          #SubscriptionConfiguration: ${{ parameters.CloudConfig.SubscriptionConfiguration }}
+          #PlatformArmTemplateParameters: ${{ parameters.ArmTemplateParameters }}
+          #Platform: $(Agent.JobName)
 
       - pwsh: >
           Set-PsDebug -Trace 1 &&
