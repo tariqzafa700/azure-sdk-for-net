@@ -79,7 +79,7 @@ jobs:
           Location: ${{ parameters.CloudConfig.Location }}
           ServiceDirectory: '${{ parameters.ServiceDirectory }}'
           SubscriptionConfiguration: ${{ parameters.CloudConfig.SubscriptionConfiguration }}
-          PlatformArmTemplateParameters: '${{ parameters.ArmTemplateParameters }}'
+          PlatformArmTemplateParameters: ${{ parameters.CloudConfig.SubscriptionConfiguration }}
           Platform: $(Agent.JobName)
 
       - pwsh: >
