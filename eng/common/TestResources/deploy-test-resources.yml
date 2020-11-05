@@ -5,9 +5,9 @@ parameters:
 - name: ArmTemplateParameters
   type: string
   default: '$subscriptionConfiguration.ArmTemplateParameters'
-  #- name: PlatformArmTemplateParameters
-  #  type: object
-  #  default: {}
+- name: PlatformArmTemplateParameters
+  type: object
+  default: {}
 - name: DeleteAfterHours
   type: number
   default: 24
