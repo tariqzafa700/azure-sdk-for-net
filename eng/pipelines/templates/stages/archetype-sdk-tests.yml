@@ -55,29 +55,29 @@ parameters:
     Linux_NetCore:
       OSVmImage: "ubuntu-18.04"
       TestTargetFramework: netcoreapp2.1
-    Windows_NetCore:
-      OSVmImage: "windows-2019"
-      TestTargetFramework: netcoreapp2.1
-    Windows_NetCore_ProjectRefAzureClients:
-      OSVmImage: "windows-2019"
-      TestTargetFramework: netcoreapp2.1
-      AdditionalTestArguments: "/p:UseProjectReferenceToAzureClients=true"
-    Windows_NetFramework:
-      OSVmImage: "windows-2019"
-      TestTargetFramework: net461
-    Windows_NetFramework_ProjectRefAzureClients:
-      OSVmImage: "windows-2019"
-      TestTargetFramework: net461
-      AdditionalTestArguments: "/p:UseProjectReferenceToAzureClients=true"
-    MacOS:
-      OSVmImage: "macOS-10.15"
-      TestTargetFramework: netcoreapp2.1
-      SupportedClouds: 'Public'
-    Windows_NetCore_Record:
-      OSVmImage: "windows-2019"
-      TestMode: Record
-      TestTargetFramework: netcoreapp2.1
-      SupportedClouds: 'Public'
+      #  Windows_NetCore:
+      #    OSVmImage: "windows-2019"
+      #    TestTargetFramework: netcoreapp2.1
+      #  Windows_NetCore_ProjectRefAzureClients:
+      #    OSVmImage: "windows-2019"
+      #    TestTargetFramework: netcoreapp2.1
+      #    AdditionalTestArguments: "/p:UseProjectReferenceToAzureClients=true"
+      #  Windows_NetFramework:
+      #    OSVmImage: "windows-2019"
+      #    TestTargetFramework: net461
+      #  Windows_NetFramework_ProjectRefAzureClients:
+      #    OSVmImage: "windows-2019"
+      #    TestTargetFramework: net461
+      #    AdditionalTestArguments: "/p:UseProjectReferenceToAzureClients=true"
+      #  MacOS:
+      #    OSVmImage: "macOS-10.15"
+      #    TestTargetFramework: netcoreapp2.1
+      #    SupportedClouds: 'Public'
+      #  Windows_NetCore_Record:
+      #    OSVmImage: "windows-2019"
+      #    TestMode: Record
+      #    TestTargetFramework: netcoreapp2.1
+      #    SupportedClouds: 'Public'
 - name: PlatformPreSteps
   type: object
   default:
