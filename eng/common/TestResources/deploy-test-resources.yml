@@ -83,13 +83,13 @@ steps:
       #  }
       #}
 
-      eng/common/TestResources/New-TestResources.ps1 `
-        -BaseName 'Generated' `
-        -ServiceDirectory '${{ parameters.ServiceDirectory }}' `
-        -Location '${{ parameters.Location }}' `
-        -DeleteAfterHours '${{ parameters.DeleteAfterHours }}' `
-        @subscriptionConfiguration `
-        -CI `
-        -Force `
-        -Verbose | Out-Null
+      #eng/common/TestResources/New-TestResources.ps1 `
+      #  -BaseName 'Generated' `
+      #  -ServiceDirectory '${{ parameters.ServiceDirectory }}' `
+      #  -Location '${{ parameters.Location }}' `
+      #  -DeleteAfterHours '${{ parameters.DeleteAfterHours }}' `
+      #  @subscriptionConfiguration `
+      #  -CI `
+      #  -Force `
+      #  -Verbose | Out-Null
     displayName: Deploy test resources
