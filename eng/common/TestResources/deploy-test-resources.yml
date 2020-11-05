@@ -1,11 +1,25 @@
 parameters:
-  ServiceDirectory: not-set
-  ArmTemplateParameters: '$subscriptionConfiguration.ArmTemplateParameters'
-  PlatformArmTemplateParameters: ''
-  DeleteAfterHours: 24
-  Location: ''
-  SubscriptionConfiguration: $(sub-config-azure-cloud-test-resources)
-  Platform: ''
+- name: ServiceDirectory
+  type: string
+  default: not-set
+- name: ArmTemplateParameters
+  type: string
+  default: '$subscriptionConfiguration.ArmTemplateParameters'
+- name: PlatformArmTemplateParameters
+  type: object
+  default: {}
+- name: DeleteAfterHours
+  type: number
+  default: 24
+- name: Location
+  type: string
+  default: ''
+- name: SubscriptionConfiguration
+  type: object
+  default: $(sub-config-azure-cloud-test-resources)
+- name: Platform
+  type: string
+  default: ''
 
 # SubscriptionConfiguration will be splat into the parameters of the test
 # resources script. It should be JSON in the form:
