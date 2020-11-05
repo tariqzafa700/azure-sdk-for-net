@@ -79,7 +79,7 @@ jobs:
           Location: ${{ parameters.CloudConfig.Location }}
           ServiceDirectory: '${{ parameters.ServiceDirectory }}'
           SubscriptionConfiguration: ${{ parameters.CloudConfig.SubscriptionConfiguration }}
-          PlatformArmTemplateParameters: |
+          PlatformArmTemplateParameters:
             ${{ each param in parameters.PlatformArmTemplateParameters }}:
               ${{ param.key }}:
                 Value: ${{ param.Value }}
