@@ -78,7 +78,7 @@ jobs:
         parameters:
           Location: ${{ parameters.CloudConfig.Location }}
           ServiceDirectory: '${{ parameters.ServiceDirectory }}'
-          #SubscriptionConfiguration: ${{ parameters.CloudConfig.SubscriptionConfiguration }}
+          SubscriptionConfiguration: ${{ parameters.CloudConfig.SubscriptionConfiguration }}
           PlatformArmTemplateParameters: ${{ parameters.ArmTemplateParameters }}
           Platform: $(Agent.JobName)
 
