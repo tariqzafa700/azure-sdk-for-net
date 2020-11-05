@@ -71,9 +71,15 @@ steps:
       #     TestGlobalParam:
       #       Value: global foo
       # For duplicate keys, prefer the template/script parameter.
-      $platformArmTemplateParameters = @'
-        ${{ parameters.PlatformArmTemplateParameters }}
-      '@ | ConvertFrom-Json -AsHashtable;
+
+      $platformArmTemplateParameters = `
+        ${{ each param in parameters.PlatformArmTemplateParameters }}:
+          ${{ param.key }}:
+            Value: ${{ param.Value }}
+            ${{ if param.Platforms }}:
+              Platforms:
+                - ${{ each platform in param.Platforms }}:
+                    ${{ platform }}
 
       if ($platformArmTemplateParameters) {
         foreach ($p in $platformArmTemplateParameters.GetEnumerator()) {
