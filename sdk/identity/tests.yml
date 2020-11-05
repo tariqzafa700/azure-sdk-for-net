@@ -16,12 +16,8 @@ extends:
         TestTargetFramework: 'netcoreapp2.1'
         Container: 'ubuntu_netcore_keyring'
         SupportedClouds: 'Public,Canary,Preview'
+        ArmTemplateParameters: '@{ enableHsm = $true; }'
     ServiceDirectory: identity
-    ArmTemplateParameters: |
-      enableHsm:
-        Value: true
-        Platforms:
-          - Linux_NetCore_Keyring
     PreSteps:
       - pwsh: Install-Module -Name Az -Scope CurrentUser -AllowClobber -Force -Verbose
         displayName: Install Azure PowerShell module

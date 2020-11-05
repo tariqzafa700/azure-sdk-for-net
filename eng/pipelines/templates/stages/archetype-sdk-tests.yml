@@ -14,9 +14,6 @@ parameters:
 - name: EnvVars
   type: object
   default: {}
-- name: ArmTemplateParameters
-  type: object
-  default: {}
 - name: MaxParallel
   type: number
   default: 0
@@ -127,7 +124,6 @@ stages:
             Location: ${{ parameters.Location }}
             ServiceDirectory: ${{ parameters.ServiceDirectory }}
             TestSetupSteps: ${{ parameters.TestSetupSteps }}
-            ArmTemplateParameters: ${{ parameters.ArmTemplateParameters }}
           Platforms:
             ${{ each platform in parameters.Platforms }}:
               ${{ if contains(coalesce(platform.value.SupportedClouds, parameters.Clouds), cloud.key) }}:
