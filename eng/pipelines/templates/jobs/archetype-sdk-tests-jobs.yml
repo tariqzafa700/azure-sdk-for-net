@@ -80,7 +80,7 @@ jobs:
           ServiceDirectory: '${{ parameters.ServiceDirectory }}'
           SubscriptionConfiguration: ${{ parameters.CloudConfig.SubscriptionConfiguration }}
           PlatformArmTemplateParameters:
-            ${{ each param in parameters.PlatformArmTemplateParameters }}:
+            ${{ each param in parameters.ArmTemplateParameters }}:
               ${{ param.key }}:
                 Value: ${{ param.Value }}
                 ${{ if param.Platforms }}:
