@@ -6,8 +6,8 @@ parameters:
   type: string
   default: '$subscriptionConfiguration.ArmTemplateParameters'
 - name: PlatformArmTemplateParameters
-  type: object
-  default: {}
+  type: string
+  default: ''
 - name: DeleteAfterHours
   type: number
   default: 24
@@ -71,15 +71,9 @@ steps:
       #     TestGlobalParam:
       #       Value: global foo
       # For duplicate keys, prefer the template/script parameter.
-
-      $platformArmTemplateParameters = `
-        ${{ each param in parameters.PlatformArmTemplateParameters }}:
-          ${{ param.key }}:
-            Value: ${{ param.Value }}
-            ${{ if param.Platforms }}:
-              Platforms:
-                - ${{ each platform in param.Platforms }}:
-                    ${{ platform }}
+      $platformArmTemplateParameters = @'
+        ${{ parameters.PlatformArmTemplateParameters }}
+      '@ | ConvertFrom-Yaml -AsHashtable;
 
       if ($platformArmTemplateParameters) {
         foreach ($p in $platformArmTemplateParameters.GetEnumerator()) {

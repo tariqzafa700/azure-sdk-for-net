@@ -79,11 +79,14 @@ jobs:
           Location: ${{ parameters.CloudConfig.Location }}
           ServiceDirectory: '${{ parameters.ServiceDirectory }}'
           SubscriptionConfiguration: ${{ parameters.CloudConfig.SubscriptionConfiguration }}
-          PlatformArmTemplateParameters:
-            foo:
-              Value: 'bar'
-              Platforms:
-                - 'Public'
+          PlatformArmTemplateParameters: |
+            ${{ each param in parameters.PlatformArmTemplateParameters }}:
+              ${{ param.key }}:
+                Value: ${{ param.Value }}
+                ${{ if param.Platforms }}:
+                  Platforms:
+                    - ${{ each platform in param.Platforms }}:
+                        ${{ platform }}
           Platform: $(Agent.JobName)
 
       - pwsh: >
