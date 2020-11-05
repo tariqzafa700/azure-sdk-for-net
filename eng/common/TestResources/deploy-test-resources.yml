@@ -54,9 +54,7 @@ steps:
   - pwsh: |
       eng/common/TestResources/Import-AzModules.ps1
 
-      $subscriptionConfiguration = @'
-        ${{ parameters.SubscriptionConfiguration }}
-      '@ | ConvertFrom-Json -AsHashtable;
+      $subscriptionConfiguration = @{}
 
       # Support legacy ArmTemplateParameters passed in directly as a hashmap, otherwise default to subscriptionConfiguration JSON.
       #   Example legacy input: @{ 'param1' = 'foo' ; 'param2' = 'bar' }
