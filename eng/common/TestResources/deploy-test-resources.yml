@@ -60,7 +60,7 @@ steps:
 
       # Support legacy ArmTemplateParameters passed in directly as a hashmap, otherwise default to subscriptionConfiguration JSON.
       #   Example legacy input: @{ 'param1' = 'foo' ; 'param2' = 'bar' }
-      $subscriptionConfiguration.ArmTemplateParameters = ${{ parameters.ArmTemplateParameters }} ? ${{ parameters.ArmTemplateParameters }} : @{}
+      #$subscriptionConfiguration.ArmTemplateParameters = ${{ parameters.ArmTemplateParameters }} ? ${{ parameters.ArmTemplateParameters }} : @{}
 
       # Support additional sdk pipeline and/or platform specific arm template parameters:
       #   ArmTemplateParameters:
