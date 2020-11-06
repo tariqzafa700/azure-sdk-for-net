@@ -10,7 +10,6 @@ resources:
 extends:
   template: ../../eng/pipelines/templates/stages/archetype-sdk-tests.yml
   parameters:
-    UnsupportedClouds: 'Public,UsGov'
     AdditionalPlatforms:
       Linux_NetCore_Keyring:
         OSVmImage: "ubuntu-18.04"
