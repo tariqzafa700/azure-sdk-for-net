@@ -26,9 +26,6 @@ parameters:
 - name: TestSetupSteps
   type: stepList
   default: []
-- name: Containers
-  type: object
-  default: []
 - name: CloudConfig
   type: object
   default: {}
@@ -61,7 +58,7 @@ jobs:
     pool:
       vmImage: $(OSVmImage)
 
-    ${{ if parameters.UsePlatformContainer }}:
+    ${{ if eq(parameters.UsePlatformContainer, 'true') }}:
       container: $[ variables['Container'] ]
 
     steps:

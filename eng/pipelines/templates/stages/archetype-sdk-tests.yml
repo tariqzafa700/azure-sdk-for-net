@@ -32,9 +32,6 @@ parameters:
 - name: TestSetupSteps
   type: stepList
   default: []
-- name: Containers
-  type: object
-  default: []
 - name: CloudConfig
   type: object
   default:
@@ -110,6 +107,9 @@ stages:
       jobs:
       - template: ../jobs/archetype-sdk-tests-host.yml
         parameters:
+          ${{ each platform in parameters.Platforms }}:
+            ${{ if ne(platform.value.Container, '') }}:
+              UsePlatformContainer: true
           AdditionalParameters:
             PreSteps:
               - ${{ parameters.PlatformPreSteps }}

@@ -7,6 +7,9 @@ parameters:
 - name: Platforms
   type: object
   default: {}
+- name: UsePlatformContainer
+  type: boolean
+  default: false
 
 jobs:
   # There is no way to specify the container and/or target fields with a runtime value
@@ -22,13 +25,14 @@ jobs:
       CloudConfig: ${{ parameters.CloudConfig }}
       ${{ each param in parameters.AdditionalParameters }}:
         ${{ param.key }}: ${{ param.value }}
-  - template: ./archetype-sdk-tests-jobs.yml
-    parameters:
-      UsePlatformContainer: true
-      Platforms:
-        ${{ each platform in parameters.Platforms }}:
-          ${{ if ne(platform.value.Container, '') }}:
-            ${{ platform.key }}: ${{ platform.value }}
-      CloudConfig: ${{ parameters.CloudConfig }}
-      ${{ each param in parameters.AdditionalParameters }}:
-        ${{ param.key }}: ${{ param.value }}
+  - ${{ if eq(parameters.UsePlatformContainer, 'true') }}:
+    - template: ./archetype-sdk-tests-jobs.yml
+      parameters:
+        UsePlatformContainer: true
+        Platforms:
+          ${{ each platform in parameters.Platforms }}:
+            ${{ if ne(platform.value.Container, '') }}:
+              ${{ platform.key }}: ${{ platform.value }}
+        CloudConfig: ${{ parameters.CloudConfig }}
+        ${{ each param in parameters.AdditionalParameters }}:
+          ${{ param.key }}: ${{ param.value }}
