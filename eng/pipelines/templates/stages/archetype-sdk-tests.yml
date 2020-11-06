@@ -101,7 +101,7 @@ parameters:
 
 stages:
 - ${{ each cloud in parameters.CloudConfig }}:
-  - ${{ if or(contains(parameters.Clouds, cloud.key), eq(variables.RunAllClouds, true)) }}:
+  - ${{ if contains(parameters.Clouds, cloud.key) }}:
     - stage: ${{ cloud.key }}
       dependsOn: []
       jobs:

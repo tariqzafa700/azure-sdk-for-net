@@ -42,6 +42,11 @@ steps:
         ${{ parameters.SubscriptionConfiguration }}
       '@ | ConvertFrom-Json -AsHashtable;
 
+      $armTemplateParameters = @{}
+      if ('${{ parameters.ArmTemplateParameters }}') {
+        $armTemplateParameters = ${{ parameters.ArmTemplateParameters }}
+      }
+
       eng/common/TestResources/New-TestResources.ps1 `
         -BaseName 'Generated' `
         -ServiceDirectory '${{ parameters.ServiceDirectory }}' `
@@ -51,7 +56,7 @@ steps:
         # pass those in via the ArmTemplateParameters flag, and handle any
         # additional parameters from the pipelines via AdditionalParameters
         @subscriptionConfiguration `
-        -AdditionalParameters ${{ parameters.ArmTemplateParameters }} `
+        -AdditionalParameters $armTemplateParameters `
         -CI `
         -Force `
         -Verbose | Out-Null
