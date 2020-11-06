@@ -47,9 +47,7 @@ steps:
       }
 
       $armTemplateParameters = ${{ parameters.ArmTemplateParameters }}
-      Write-Host "Platform params: $($armTemplateParameters)"
       foreach ($p in $armTemplateParameters.GetEnumerator()) {
-        Write-Host "Adding platform param $($p.Name): $($p.Value)"
         $subscriptionConfiguration.ArmTemplateParameters[$p.Name] = $p.Value
       }
 
