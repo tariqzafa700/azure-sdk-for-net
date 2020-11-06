@@ -42,11 +42,6 @@ steps:
         ${{ parameters.SubscriptionConfiguration }}
       '@ | ConvertFrom-Json -AsHashtable;
 
-      $armTemplateParameters = @{}
-      if ('${{ parameters.ArmTemplateParameters }}') {
-        $armTemplateParameters = ${{ parameters.ArmTemplateParameters }}
-      }
-
       # The subscriptionConfiguration may have ArmTemplateParameters defined, so
       # pass those in via the ArmTemplateParameters flag, and handle any
       # additional parameters from the pipelines via AdditionalParameters
@@ -56,7 +51,7 @@ steps:
         -Location '${{ parameters.Location }}' `
         -DeleteAfterHours '${{ parameters.DeleteAfterHours }}' `
         @subscriptionConfiguration `
-        -AdditionalParameters $armTemplateParameters `
+        -AdditionalParameters ${{ parameters.ArmTemplateParameters }} `
         -CI `
         -Force `
         -Verbose | Out-Null
