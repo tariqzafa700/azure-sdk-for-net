@@ -105,7 +105,7 @@ parameters:
 stages:
 - ${{ each cloud in parameters.CloudConfig }}:
   # Run all clouds by default for weekly test pipeline, except for clouds specifically unsupported by the calling pipeline
-  - ${{ if or(contains(parameters.Clouds, cloud.key), contains(variables['Build.DefinitionName'], 'tests-weekly')) }}:
+  - ${{ if or(contains(parameters.Clouds, cloud.key), contains(variables['Build.DefinitionName'], 'identity')) }}:
     - ${{ if not(contains(parameters.UnsupportedClouds, cloud.key)) }}:
       - stage: ${{ cloud.key }}
         dependsOn: []
