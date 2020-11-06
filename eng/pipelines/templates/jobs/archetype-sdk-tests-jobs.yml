@@ -54,7 +54,7 @@ jobs:
       - name: AdditionalTestArguments
         value: ''
       - name: ArmTemplateParameters
-        value: coalesce($[ variables['ArmTemplateParameters'], '@{}')
+        value: coalesce(variables.ArmTemplateParameters, '@{}')
 
     timeoutInMinutes: ${{ parameters.TimeoutInMinutes }}
 
