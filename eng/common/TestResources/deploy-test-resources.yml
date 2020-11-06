@@ -48,6 +48,7 @@ steps:
 
       $armTemplateParameters = ${{ parameters.ArmTemplateParameters }}
       foreach ($p in $armTemplateParameters.GetEnumerator()) {
+        Write-Verbose "BBP PARAM: $($p.Name) $($p.Value)"
         $subscriptionConfiguration.ArmTemplateParameters[$p.Name] = $p.Value
       }
 
