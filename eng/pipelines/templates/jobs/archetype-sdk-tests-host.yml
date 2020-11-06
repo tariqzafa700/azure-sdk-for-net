@@ -25,6 +25,8 @@ jobs:
       CloudConfig: ${{ parameters.CloudConfig }}
       ${{ each param in parameters.AdditionalParameters }}:
         ${{ param.key }}: ${{ param.value }}
+  # Only include the template if we know there is a platform with a container,
+  # otherwise azure pipelines will populate a blank job with an empty matrix
   - ${{ if eq(parameters.UsePlatformContainer, 'true') }}:
     - template: ./archetype-sdk-tests-jobs.yml
       parameters:
