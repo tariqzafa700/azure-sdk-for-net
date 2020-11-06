@@ -51,7 +51,7 @@ jobs:
       - name: AdditionalTestArguments
         value: ''
       - name: ArmTemplateParameters
-        value: ''
+        value: '@{}'
 
     timeoutInMinutes: ${{ parameters.TimeoutInMinutes }}
 
