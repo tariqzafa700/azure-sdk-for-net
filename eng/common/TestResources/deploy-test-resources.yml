@@ -47,14 +47,14 @@ steps:
         $armTemplateParameters = ${{ parameters.ArmTemplateParameters }}
       }
 
+      # The subscriptionConfiguration may have ArmTemplateParameters defined, so
+      # pass those in via the ArmTemplateParameters flag, and handle any
+      # additional parameters from the pipelines via AdditionalParameters
       eng/common/TestResources/New-TestResources.ps1 `
         -BaseName 'Generated' `
         -ServiceDirectory '${{ parameters.ServiceDirectory }}' `
         -Location '${{ parameters.Location }}' `
         -DeleteAfterHours '${{ parameters.DeleteAfterHours }}' `
-        # The subscriptionConfiguration may have ArmTemplateParameters defined, so
-        # pass those in via the ArmTemplateParameters flag, and handle any
-        # additional parameters from the pipelines via AdditionalParameters
         @subscriptionConfiguration `
         -AdditionalParameters $armTemplateParameters `
         -CI `
