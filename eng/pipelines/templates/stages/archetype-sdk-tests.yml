@@ -107,9 +107,10 @@ stages:
       jobs:
       - template: ../jobs/archetype-sdk-tests-host.yml
         parameters:
-          ${{ each platform in parameters.Platforms }}:
-            ${{ if ne(platform.value.Container, '') }}:
-              UsePlatformContainer: true
+          ${{ each platform in parameters.AdditionalPlatforms }}:
+            ${{ if contains(coalesce(platform.value.SupportedClouds, parameters.Clouds), cloud.key) }}:
+              ${{ if ne(platform.value.Container, '') }}:
+                UsePlatformContainer: true
           AdditionalParameters:
             PreSteps:
               - ${{ parameters.PlatformPreSteps }}
