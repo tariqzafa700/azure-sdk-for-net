@@ -47,9 +47,9 @@ steps:
       }
 
       $armTemplateParameters = ${{ parameters.ArmTemplateParameters }}
-      foreach ($p in $armTemplateParameters.GetEnumerator()) {
-        Write-Verbose "BBP PARAM: $($p.Name) $($p.Value)"
-        $subscriptionConfiguration.ArmTemplateParameters[$p.Name] = $p.Value
+      foreach ($key in $armTemplateParameters.Keys) {
+        Write-Verbose "BBP PARAM: $($key) $($armTemplateParameters[$key])"
+        $subscriptionConfiguration.ArmTemplateParameters[$key] = $armTemplateParameters[$key]
       }
 
       eng/common/TestResources/New-TestResources.ps1 `
