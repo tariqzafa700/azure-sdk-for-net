@@ -27,7 +27,7 @@ jobs:
       UsePlatformContainer: true
       Platforms:
         ${{ each platform in parameters.Platforms }}:
-          ${{ if platform.value.Container }}:
+          ${{ if ne(platform.value.Container, '') }}:
             ${{ platform.key }}: ${{ platform.value }}
       CloudConfig: ${{ parameters.CloudConfig }}
       ${{ each param in parameters.AdditionalParameters }}:
